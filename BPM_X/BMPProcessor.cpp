@@ -1,13 +1,13 @@
 #include "BMPProcessor.h"
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 BMPProcessor::BMPProcessor(const std::string& inputFile) {
     readBMP(inputFile);
 }
 
 BMPProcessor::~BMPProcessor() {
-    // Ресурсы освобождаются автоматически (vector и fstream)
+    // Ресурсы освобождаются автоматически
 }
 
 void BMPProcessor::readBMP(const std::string& filename) {
@@ -42,18 +42,6 @@ void BMPProcessor::readBMP(const std::string& filename) {
             throw std::runtime_error("Image contains colors other than black and white");
         }
     }
-}
-
-void BMPProcessor::display() const {
-    for (int y = height - 1; y >= 0; --y) {
-        for (int x = 0; x < width; ++x) {
-            int index = y * ((width * bytesPerPixel + 3) / 4) * 4 + x * bytesPerPixel;
-            unsigned char r = pixels[index + 2];
-            std::cout << (r == 0 ? "#" : ".");
-        }
-        std::cout << std::endl;
-    }
-    std::cout << std::endl;
 }
 
 void BMPProcessor::drawLine(int x1, int y1, int x2, int y2) {
@@ -95,14 +83,8 @@ void BMPProcessor::saveBMP(const std::string& filename) const {
 }
 
 void BMPProcessor::processAndSave() {
-    std::cout << "Original image:\n";
-    display();
-
     drawLine(0, 0, width - 1, height - 1);
     drawLine(width - 1, 0, 0, height - 1);
-
-    std::cout << "Image with cross:\n";
-    display();
 
     std::string outputFile;
     std::cout << "Enter output BMP file name: ";

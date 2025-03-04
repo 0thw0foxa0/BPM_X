@@ -13,7 +13,6 @@ private:
     int width, height, bytesPerPixel;
 
     void readBMP(const std::string& filename);
-    void display() const;
     void drawLine(int x1, int y1, int x2, int y2);
     void setPixel(int x, int y, unsigned char r, unsigned char g, unsigned char b);
     void saveBMP(const std::string& filename) const;
