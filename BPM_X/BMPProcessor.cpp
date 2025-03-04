@@ -1,5 +1,4 @@
 #include "BMPProcessor.h"
-#include <fstream>
 #include <iostream>
 
 BMPProcessor::BMPProcessor(const std::string& inputFile) {
