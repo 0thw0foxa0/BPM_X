@@ -10,11 +10,12 @@ private:
     BITMAPFILEHEADER fileHeader;
     BITMAPINFOHEADER infoHeader;
     std::vector<unsigned char> pixels;
-    int width, height, bytesPerPixel;
+    int width, height, bytesPerPixel, rowSize;
 
     void readBMP(const std::string& filename);
     void drawLine(int x1, int y1, int x2, int y2);
     void setPixel(int x, int y, unsigned char r, unsigned char g, unsigned char b);
+    int getPixelIndex(int x, int y) const;
     void saveBMP(const std::string& filename) const;
 
 public:

@@ -4,14 +4,15 @@
 int main() {
     std::string inputFile;
     std::cout << "Enter input BMP file name: ";
-    std::cin >> inputFile;
+    std::getline(std::cin, inputFile);
 
     try {
         BMPProcessor bmp(inputFile);
         bmp.processAndSave();
+        std::cout << "File is ready!";
     }
     catch (const std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr << "Error: " << e.what() << "\n";
         return 1;
     }
 
